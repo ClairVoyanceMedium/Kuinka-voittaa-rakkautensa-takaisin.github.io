@@ -1,42 +1,91 @@
-# Indique aux robots que toutes les pages peuvent être explorées, sauf restrictions spécifiées
 User-agent: *
-Disallow: /admin/
-Disallow: /tmp/
-Disallow: /private/
+Disallow: /cgi-bin/
+Disallow: /wp-admin/
+Allow: /wp-admin/admin-ajax.php
+Disallow: /wp-includes/
+Disallow: /trackback/
+Disallow: /feed/
+Disallow: /comments/feed/
+Disallow: /xmlrpc.php
+Allow: /wp-content/uploads/
+Allow: /wp-content/themes/
+Allow: /wp-content/plugins/
 
-# Bloquer des URL avec paramètres inutiles pour l'indexation
-Disallow: /*?debug=true
-Disallow: /*?preview=true
+# Sitemap pour Google et autres moteurs
+Sitemap: https://clairvoyancemedium.github.io/Kuinka-voittaa-rakkautensa-takaisin.github.io/sitemap.xml
 
-# Permettre les fichiers nécessaires au bon affichage et fonctionnement
-Allow: /css/
-Allow: /js/
-Allow: /images/
-
-# Référencement des ressources multimédias
-Allow: *.png
-Allow: *.jpg
-Allow: *.webp
-Allow: *.css
-Allow: *.js
-
-# Fournir le chemin du fichier sitemap pour une meilleure indexation
-Sitemap: https://www.clairvoyancemedium.com/sitemap.xml
-
-# Autorisation pour les robots Google et Bing pour maximiser les campagnes publicitaires
+# 🚀 Optimisation totale pour Google
 User-agent: Googlebot
 Allow: /
-User-agent: AdsBot-Google
-Allow: /
-User-agent: Bingbot
+Disallow: /cgi-bin/
+Disallow: /wp-admin/
+Allow: /wp-admin/admin-ajax.php
+Disallow: /wp-includes/
+Disallow: /trackback/
+Disallow: /feed/
+Disallow: /comments/feed/
+Disallow: /xmlrpc.php
+
+# 📸 Google Images & News
+User-agent: Googlebot-Image
+Allow: /wp-content/uploads/
+User-agent: Googlebot-News
 Allow: /
 
-# Bloquer les robots nuisibles ou non désirés
-User-agent: BadBot
-Disallow: /
-User-agent: EvilScraper
-Disallow: /
+# 🤑 Google AdSense
+User-agent: Mediapartners-Google
+Allow: /
 
-# Empêcher l'exploration des fichiers sensibles
-Disallow: /config/
-Disallow: /backup/
+# 📲 Google Mobile
+User-agent: Googlebot-Mobile
+Allow: /
+
+# 📱 Autres moteurs mobiles
+User-agent: Bingbot-Mobile
+Allow: /
+User-agent: DuckDuckBot-Mobile
+Allow: /
+User-agent: Baiduspider-mobile
+Allow: /
+
+# 🧠 Bots IA & SEO
+User-agent: *AI*
+Allow: /
+User-agent: ChatGPTBot
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: GeminiBot
+Allow: /
+User-agent: CopilotBot
+Allow: /
+User-agent: YouBot
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: *AI-friendly*
+Allow: /
+
+# 🔥 Élimination des URL inutiles (tracking, paramètres inutiles)
+User-agent: *
+Disallow: /*?utm_
+Disallow: /*?fbclid=
+Disallow: /*?gclid=
+Disallow: /*?ref=
+Noindex: /*?utm_
+Noindex: /*?fbclid=
+Noindex: /*?gclid=
+Noindex: /*?ref=
+
+# ⚡ Permet l’accès aux ressources critiques pour le SEO
+User-agent: *
+Allow: /wp-content/*.css$
+Allow: /wp-content/*.js$
+
+# 📈 Empêche les doublons inutiles
+User-agent: *
+Clean-param: utm_source&utm_medium&utm_campaign&utm_term&utm_content on all
+
+# 🚀 Autorisation maximale pour tous les moteurs mobiles et IA
+User-agent: *
+Allow: /
